@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>mousemove</title>
+	<script type="text/javascript" src='../jquery.js'></script>
+	<style type="text/css">
+		img{
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+	<img src="1.png">
+
+	<script type="text/javascript">
+		$(window).on('mousemove',function(e){
+			$('img').css({
+				'top': e.pageY - $('img').height()/2,
+				'left': e.pageX - $('img').width()/2
+			});
+		})
+	</script>
+</body>
+</html>

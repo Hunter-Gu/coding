@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>mousemove</title>
+	<script type="text/javascript" src='../jquery.js'></script>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		.ct{
+			height: 300px;
+			width: 300px;
+			background-color: #ccc;
+			margin: 50px;
+		}
+	</style>
+</head>
+<body>
+	<div class="ct">
+	</div>
+	<div class="message"></div>
+
+	<script type="text/javascript">
+		$('.ct').on('mousemove',function(e){
+			var ctPosLeft = $(this).offset().left,
+				ctPosTop = $(this).offset().top;
+			$('.message').text('在盒子中的坐标为：X'+ (e.pageX - ctPosLeft) + ' Y:' + (e.pageY - ctPosTop));
+		});
+	</script>
+</body>
+</html>

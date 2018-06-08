@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>triangle arrow logo</title>
+	<style type="text/css">
+		.triangle{
+			border-top: 30px solid transparent;
+			border-right: 30px solid transparent;
+			border-bottom: 30px solid transparent;
+			border-left: 30px solid #ccc;
+			display: inline-block;
+		}
+		.arrow{
+			border-top: 30px solid transparent;
+			border-right: 30px solid transparent;
+			border-bottom: 30px solid transparent;
+			border-left: 30px solid #ccc;
+			display: inline-block;
+			position: relative;
+		}
+		.arrow:after{
+			content: '';
+			border-top: 30px solid transparent;
+			border-right: 30px solid transparent;
+			border-bottom: 30px solid transparent;
+			border-left: 30px solid white;
+			display: inline-block;
+			position: absolute;
+			top: -30px;
+			left: -32px;
+		}
+	</style>
+</head>
+<body>
+	<div class="triangle"></div>
+	<div class="arrow"></div>
+</body>
+</html>

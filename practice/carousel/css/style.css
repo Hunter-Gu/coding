@@ -1,0 +1,145 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+a{
+	text-decoration: none;
+}
+li{
+	list-style: none;
+}
+
+nav{
+	background-color: rgb(81,190,254);
+	padding: 10px 50px;
+	margin-bottom: 50px;
+	line-height: 50px;
+	height: 50px;
+	z-index: 7;
+}
+nav:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+nav h1{
+	float: left;
+}
+nav a.button{
+	display: block;
+	font-size: 30px;
+	color: #333;
+	float: right;
+}
+nav a.button .stop{
+	display: none;
+}
+nav p{
+	float: right;
+}
+
+section{
+	margin-bottom: 200px;
+}
+
+.carousel img{
+	width: 300px;
+}
+.carousel{
+	width: 300px;
+	position: relative;
+	overflow: hidden;
+}
+.carousel ul.ct:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+.carousel ul.ct li{
+	float: left;
+}
+
+.carousel ul.arrow li{
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	background-color: rgba(50,50,50,0.8);
+	border-radius: 50%;
+	padding: 8px 10px;
+}
+.carousel ul.arrow li:hover{
+	background-color: rgba(10,10,10,0.8);
+}
+.carousel ul.arrow li a{
+	color: white;
+}
+.carousel ul.arrow li.pre{
+	left: 0;
+}
+.carousel ul.arrow li.next{
+	right: 0;
+}
+
+.carousel ul.mark{
+	position: absolute;
+	bottom: 5%;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.carousel ul.mark li{
+	float: left;
+	margin: 0 5px;
+}
+.carousel ul.mark li a{
+	color: #eee;
+}
+.carousel ul.mark li .choose{
+	color: #333;
+}
+
+
+.revolve{
+	width: 1200px;
+	position: relative;
+}
+/*.revolve ul{
+	position: relative;
+}
+.revolve li{
+	position: absolute;
+}*/
+.revolve img{
+	position: absolute;
+	display: block;
+}
+.revolve ul.arrow li{
+	position: absolute;
+	top: 40%;
+	z-index: 5;
+}
+.revolve ul.arrow li.pre{
+	left: 0;
+}
+.revolve ul.arrow li.next{
+	right: 76px;
+}
+
+
+.squee ul{
+	width: 1000px;
+	overflow: hidden;
+	height: 375px;
+}
+.squee ul:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+.squee li{
+	width: 200px;
+	float: left;
+	overflow: hidden;
+}
+.squee img{
+	width: 1000px;
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>translate</title>
+	<script type="text/javascript" src='../jquery.js'></script>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		li{
+			list-style: none;
+		}
+		body{
+			padding: 50px;
+		}
+		select{
+			width: 150px;
+			height: 300px;
+			background-color: yellow;
+		}
+		option{
+			font-size: 20px;
+		}
+	</style>
+</head>
+<body>
+	<select name="" multiple class="ct-left">
+		<option>苹果</option>
+		<option>梨</option>
+		<option>橘子</option>
+		<option>西瓜</option>
+		<option>葡萄</option>
+	</select>
+	<button class="all-left"><<</button>
+	<button class="all-right">>></button>
+	<button class="left"><</button>
+	<button class="right">></button>
+	<select name="" multiple class="ct-right">
+
+	</select>
+	
+
+	<script type="text/javascript">
+		$('.right').on('click',function(){
+			$ele = $('.ct-left :selected');
+			$ele.remove();
+			$('.ct-right').append($ele);
+			$ele[0].selected = false;
+		})
+		$('.left').on('click',function(){
+			$ele = $('.ct-right :selected');
+			$ele.remove();
+			$('.ct-left').append($ele)
+			$ele[0].selected = false;
+		})
+		$('.all-right').on('click',function(){
+			var $ele = $('.ct-left option');
+			$ele.remove();
+			$('.ct-right').append($ele);
+		});
+		$('.all-left').on('click',function(){
+			var $ele = $('.ct-right option');
+			$ele.remove();
+			$('.ct-left').append($ele);
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>draft</title>
+	<script type="text/javascript" src='../jquery.js'></script>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		.dialog{
+			height: 300px;
+			width: 500px;
+			border: 1px solid #ccc;
+			position: absolute;
+		}
+		.dialog h1{
+			background-color: #333;
+			color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<div class="dialog">
+		<h1>弹窗</h1>
+		<div>123</div>
+	</div>
+	
+
+	<script type="text/javascript">
+		$('.dialog').on('mousedown',function(e){
+			var offsetLeft = e.pageX - $(this).offset().left,
+				offsetTop = e.pageY - $(this).offset().top;
+
+			$(window).on('mousemove',function(evt){
+				$('.dialog').css({
+					'top': evt.pageY - offsetTop,
+					'left': evt.pageX - offsetLeft	
+				});
+			});
+		});
+		$(window).on('mouseup',function(e){
+			$(window).off('mousemove');
+		});
+	</script>
+</body>
+</html>

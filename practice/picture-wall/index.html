@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>picture wall</title>
+
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		li{
+			list-style: none;
+			position: absolute;
+			margin: 10px 15px;
+			border: 1px solid #333;
+			padding: 5px;
+			transition: 1s all;
+		}
+		ul{
+			position: relative;
+		}
+		.waterfall img{
+			width: 200px;
+		}
+		.isshow{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="waterfall">
+		<ul>
+			<li><img src="pic/1.jpg"></li>
+			<li><img src="pic/2.jpg"></li>
+			<li><img src="pic/3.jpg"></li>
+			<li><img src="pic/4.jpg"></li>
+			<li><img src="pic/5.jpg"></li>
+			<li><img src="pic/6.jpg"></li>
+			<li><img src="pic/7.jpg"></li>
+			<li><img src="pic/8.jpg"></li>
+			<li><img src="pic/9.jpg"></li>
+			<li><img src="pic/10.jpg"></li>
+			<li><img src="pic/11.jpg"></li>
+			<li><img src="pic/12.jpg"></li>
+			<li><img src="pic/13.jpg"></li>
+			<li><img src="pic/14.jpg"></li>
+			
+		</ul>
+	</div>
+	<div class="isshow">看不见我</div>
+
+	<script type="text/javascript" src="js/lib/requirejs.js" data-main="js/main.js"></script>
+</body>
+</html>

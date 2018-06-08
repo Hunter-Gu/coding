@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>waterFall</title>
+	<script type="text/javascript" src='../jquery.js'></script>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		li{
+			list-style: none;
+			position: absolute;
+			margin: 10px 15px;
+			border: 1px solid #333;
+			padding: 5px;
+			transition: 1s all;
+		}
+		ul{
+			position: relative;
+		}
+		.waterfall img{
+			width: 200px;
+		}
+	</style>
+</head>
+<body>
+	<div class="waterfall">
+		<ul>
+			<li><img src="pic/1.jpg"></li>
+			<li><img src="pic/2.jpg"></li>
+			<li><img src="pic/3.jpg"></li>
+			<li><img src="pic/4.jpg"></li>
+			<li><img src="pic/5.jpg"></li>
+			<li><img src="pic/6.jpg"></li>
+			<li><img src="pic/7.jpg"></li>
+			<li><img src="pic/8.jpg"></li>
+			<li><img src="pic/9.jpg"></li>
+			<li><img src="pic/10.jpg"></li>
+			<li><img src="pic/11.jpg"></li>
+			<li><img src="pic/12.jpg"></li>
+			<li><img src="pic/13.jpg"></li>
+			<li><img src="pic/14.jpg"></li>
+		</ul>
+	</div>
+
+	<script type="text/javascript">
+		var waterFall = (function(){
+			var node;
+			function init($node){
+				node = $node;
+				var $ele = $node.find('img').parent(),
+					$nodeW = $node.width(),
+					$eleW = $ele.outerWidth(true);
+
+				var colNum = Math.floor($nodeW / $eleW),
+					arr = [];
+
+				for(var i = 0;i < colNum;i ++){
+					arr.push(0);
+				}
+
+				var minVal = 0,
+					minIdx = 0;
+
+				$ele.each(function(){
+					minVal = Math.min.apply(null,arr),
+					minIdx = arr.indexOf(minVal);
+					$(this).css({
+						'left': minIdx * $eleW,
+						'top': minVal
+					});
+					arr[minIdx] += $(this).outerHeight(true);
+				});
+			}
+			$(window).on('resize',function(){
+				init(node);
+			});	
+			return init;
+		})();
+		waterFall($('.waterfall'))
+	</script>
+</body>
+</html>

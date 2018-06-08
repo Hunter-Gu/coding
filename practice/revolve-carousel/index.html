@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Revolve Carousel</title>
+	<script type="text/javascript" src='http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js'></script>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		li{
+			list-style: none;
+		}
+		.revolve-carousel{
+			position: relative;
+			height: 400px;
+			width: 1200px;
+			margin: 0 auto;
+		}
+		.revolve-carousel li{
+			position: absolute;
+		}
+		.revolve-carousel .arrow li{
+			position: absolute;
+			top: 50%;
+			z-index: 6;
+		}
+		.arrow .next{
+			right: 0;
+		}
+		.arrow .pre{
+			left: 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="revolve-carousel">
+		<ul class="ct">
+			<li><img src="img/2-1.jpg"></li>
+			<li><img src="img/2-2.jpg"></li>
+			<li><img src="img/2-3.jpg"></li>
+			<li><img src="img/2-4.jpg"></li>
+			<li><img src="img/2-5.jpg"></li>
+			<li><img src="img/2-6.jpg"></li>
+		</ul>
+		<ul class="arrow">
+			<li class="next"><a href="javascript:void(0)"><img src="img/next.png"></a></li>
+			<li class="pre"><a href="javascript:void(0)"><img src="img/prev.png"></a></li>	
+		</ul>
+	</div>
+
+	<script type="text/javascript" src="js/lib/requirejs.js" data-main="js/main.js"></script>
+</body>
+</html>

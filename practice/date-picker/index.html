@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Date Picker</title>
+	<script type="text/javascript" src='../jquery.js'></script>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		a{
+			text-decoration: none;
+		}
+
+		table{
+			border-collapse: collapse;
+		}
+		caption,
+		th,
+		td{
+			border: 1px solid #eee;
+			text-align: center;
+		}
+		th,
+		td{
+			padding: 10px;
+		}
+		td{
+			background-color: rgb(71,185,154);
+		}
+		th{
+			background-color: rgb(31, 212, 236);
+		}
+		caption{
+			background-color: pink;
+		}
+		.today{
+			background-color: red;
+		}
+		.next{
+			float: right;
+		}
+		.pre{
+			float: left;
+		}
+		caption a{
+			color: #333;
+		}
+		.exclude{
+			background-color: #ccc;
+		}
+		td a{
+			color: #eee;
+		}
+		caption:after{
+			content: '';
+			display: block;
+			clear: both;
+		}
+		caption{
+			padding: 10px 30px;
+		}
+	</style>
+</head>
+<body>
+	<table class="date-picker">
+		<caption>
+			<a href="javascript:void(0)" class="pre"><</a>
+			<span></span>
+			<a href="javascript:void(0)" class="next">></a>
+		</caption>
+		<tr>
+			<th>日</th>
+			<th>一</th>
+			<th>二</th>
+			<th>三</th>
+			<th>四</th>
+			<th>五</th>
+			<th>六</th>
+		</tr>
+<!-- 		<tr>
+			<td>30</td>
+			<td>31</td>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+			<td>5</td>
+		</tr>
+		<tr>
+			<td>6</td>
+			<td>7</td>
+			<td>8</td>
+			<td>9</td>
+			<td>10</td>
+			<td>11</td>
+			<td>12</td>
+		</tr><tr>
+			<td>13</td>
+			<td>14</td>
+			<td>15</td>
+			<td>16</td>
+			<td>17</td>
+			<td>18</td>
+			<td>19</td>
+		</tr>
+		<tr>
+			<td>20</td>
+			<td>21</td>
+			<td>22</td>
+			<td>23</td>
+			<td>24</td>
+			<td>25</td>
+			<td>26</td>
+		</tr>
+		<tr>
+			<td>27</td>
+			<td>28</td>
+			<td>29</td>
+			<td>30</td>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+		</tr> -->
+	</table>
+
+	<script type="text/javascript">
+		var datePicker = (function(){
+			var arr = [];
+			var d = new Date();
+			var month = d.getMonth(),
+				year = d.getFullYear();
+
+			var theLastDay = 0,
+				theFirstDay = 0;//用于添加样式
+
+
+			function getLastMonth(cur,year){
+				var date = new Date();
+				date.setMonth(cur);
+				date.setFullYear(year);
+				date.setDate(1);//设为当前月的第一天
+				theFirstDay = date.getDay();//当前月第一天的星期
+
+				date.setTime(date.getTime() - 24 * 60 * 60 * 1000);//当前月第一天减一天 ---》 上个月最后一天
+				var lastLastDate = date.getDate();//上个月最后一天.
+				for(var i = 0;i < theFirstDay;i ++){
+					arr.unshift(lastLastDate - i);
+				}//到此，得到完整数组
+			}
+			getCurMonth();
+			function getCurMonth(cur,year){
+				var date = new Date();
+				var curMonth = month || date.getMonth();//当前月
+				var curYear = year || date.getFullYear();//当前月
+				date.setFullYear(curYear);
+				date.setMonth(curMonth + 1, 1);//设为下个月的第一天
+				// console.log(date);
+				date.setTime(date.getTime() - 24 * 60 * 60 * 1000);//减去24小时，为了得到当前月最后一天
+
+				var theLastDate = date.getDate();//当前月最后一天
+				theLastDay = date.getDay();//当前月最后一天的星期
+
+				for(var i = 1;i < theLastDate + 1;i ++){
+					arr.push(i);
+				}
+				for(var j = 1;j < 7 - theLastDay;j ++){
+					arr.push(j);
+				}
+				getLastMonth(curMonth,curYear);
+				apeendEle();
+			}
+			function apeendEle(){
+				var d = new Date();
+				var str = '';
+				console.log(d.getDate())
+
+				arr.forEach(function(e,i,a){
+
+					if(i % 7 === 0){
+						str += '<tr class="addEle">';
+					}
+					
+					if( i > (arr.length + theLastDay - 7) || i < theFirstDay){
+						str += '<td class="exclude"><a href="javascript:void(0)">' + e + '</a></td>';
+					}else if((e === d.getDate()) && (d.getMonth() === month) && (d.getFullYear() === year)){
+						str += '<td class="today"><a href="javascript:void(0)">' + e + '</a></td>';
+					}else{
+						str += '<td><a href="javascript:void(0)">' + e + '</a></td>';
+					}
+					if(i % 7 === 6){
+						str += '</tr>';
+					}
+				});
+
+				$('caption span').text(year + '年' + (month + 1) + '月');	
+				$('table').append($(str));
+			}
+
+			bindEvent();
+
+			function bindEvent(){
+				$('.next').on('click',function(){
+					arr = [];
+					if(month === 11){
+						month = 0;
+						year += 1;
+					}else{
+						month += 1;
+					}
+					$('.addEle').remove();
+					getCurMonth(month,year);
+
+				});
+				$('.pre').on('click',function(){
+					arr = [];
+					if(month === 0){
+						month = 11;
+						year -= 1;
+					}else{
+						month -= 1;
+					}
+					$('.addEle').remove();
+					getCurMonth(month,year);
+				});
+			}
+		})();
+		datePicker;
+	</script>
+</body>
+</html>

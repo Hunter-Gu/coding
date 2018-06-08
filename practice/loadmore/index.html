@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>loadMore</title>
+	<script type="text/javascript" src='../jquery.js'></script>
+	<style type="text/css">
+		a{
+			text-decoration: none;
+		}
+		li{
+			list-style: none;
+		}
+		.btn{
+			display: block;
+			border-radius: 5px;
+			border: 1px solid red;
+			color: red;
+			padding: 10px 20px;
+			margin: 0 auto;
+			width: 80px;
+			text-align: center;
+		}
+		li{
+			border: 1px solid #333;
+			padding: 10px;
+			border-radius: 5px;
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="content">
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+	</div>
+	<a href="javascript:void(0)" class="btn">加载更多</a>
+
+	<script type="text/javascript">
+		var loadMore = {
+			opts: {
+				type: 'get',
+				url: 'loadmore.php',
+				dataType: 'json',
+				data: {
+					start: 5,
+					len: 4
+				},
+				success: function(response){
+					loadMore.dealWith(response['data']);
+				},
+				error: function(){
+					console.log('error...');
+				}
+			},
+			bindEvent: function(){
+				var me = this;
+				$('.btn').on('click',function(){
+					$.ajax(me.opts);
+				});
+			},
+			dealWith: function(data){
+				var str = ''
+				for(var i = 0;i < data.length;i ++){
+					str += '<li>' + data[i] + '</li>';
+					this.opts.data.start += 1;
+				}
+				$('ul').append($(str));
+			}
+		};
+		loadMore.bindEvent();
+	</script>
+</body>
+</html>

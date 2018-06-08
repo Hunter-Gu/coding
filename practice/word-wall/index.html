@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Word Wall</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		a{
+			text-decoration: none;
+		}
+		html,
+		body{
+			height: 100%;
+		}
+		.wall{
+			background-image: url(img/bg.gif);
+			height: 100%;
+		}
+		.wall .ct-word{
+			background-image: url(img/content_bg.jpg);
+			background-size: content;
+			width: 800px;
+			height: 500px;
+			margin: 0 auto;
+			position: relative;
+		}
+		.wall .content{
+			position: absolute;
+			z-index: 1;
+		}
+		.wall .time{
+			background-image: url(img/tip1.gif);
+			background-repeat: no-repeat;
+			width: 220px;
+			height: 50px;
+		}
+		.wall .time p{
+			position: relative;
+			bottom: -45px;
+			padding: 0 20px;
+			font-size: 10px;
+		}
+		.wall  .time p .close{
+			font-size: 20px;
+			position: absolute;
+			right: 10px;
+			top: -5px; 
+			color: #333;
+		}
+		.wall .word{
+			background-image: url(img/tip2.gif);
+			word-wrap: break-word;
+			background-repeat: repeat-y;
+			background-position: left top;
+			width: 200px;
+			height: 80px;
+			padding: 20px 10px;
+		}
+		.wall .name{
+			background-image: url(img/tip3.gif);
+			background-repeat: no-repeat;
+			width: 200px;
+			background-position: left bottom;
+			padding: 10px;
+		}
+		.release{
+			width: 400px;
+			margin: 0 auto;
+			margin-top: 100px;
+		}
+		.wall .index{
+			z-index: 2;
+		}
+	</style>
+</head>
+<body>
+	<div class="wall">
+		<div class="ct-word">
+			
+		</div>
+		<div class="release">
+			<span>发表心情:</span>
+			<textarea placeholder="输入的内容..." cols="30" rows="8"></textarea>
+			<button>发布</button>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="js/lib/requirejs.js" data-main="js/main.js"></script>
+</body>
+</html>

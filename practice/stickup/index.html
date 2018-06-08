@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>stickUp</title>
+	<script type="text/javascript" src='../jquery.js'></script>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+		}
+		.body{
+			height: 1500px;
+			background-color: #ccc;
+		}
+		.nav{
+			background-color: #333;
+			border-radius: 10px;
+			margin: 20px 100px;
+			padding: 0 20px;
+		}
+		.nav li{
+			float: left;
+			padding: 20px 10px;
+		}
+		.nav ul:after{
+			content: '';
+			display: block;
+			clear: both;
+		}
+		.nav li>a{
+			color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<div class="nav">
+		<ul>
+			<li><a href="javascript:void(0)">1首页</a></li>
+			<li><a href="javascript:void(0)">照片墙</a></li>
+			<li><a href="javascript:void(0)">日记</a></li>
+			<li><a href="javascript:void(0)">博客</a></li>
+		</ul>
+	</div>
+	<div class="body"></div>
+	<div class="nav">
+		<ul>
+			<li><a href="javascript:void(0)">2首页</a></li>
+			<li><a href="javascript:void(0)">照片墙</a></li>
+			<li><a href="javascript:void(0)">日记</a></li>
+			<li><a href="javascript:void(0)">博客</a></li>
+		</ul>
+	</div>
+	<div class="body"></div>
+	<div class="nav">
+		<ul>
+			<li><a href="javascript:void(0)">3首页</a></li>
+			<li><a href="javascript:void(0)">照片墙</a></li>
+			<li><a href="javascript:void(0)">日记</a></li>
+			<li><a href="javascript:void(0)">博客</a></li>
+		</ul>
+	</div>
+	<div class="body"></div>
+	<div class="nav">
+		<ul>
+			<li><a href="javascript:void(0)">4首页</a></li>
+			<li><a href="javascript:void(0)">照片墙</a></li>
+			<li><a href="javascript:void(0)">日记</a></li>
+			<li><a href="javascript:void(0)">博客</a></li>
+		</ul>
+	</div>
+	<div class="body"></div>
+
+	<script type="text/javascript">
+		$.fn.stick = function(){
+			var $cur = this;//jq object
+
+			var offsetTop = $cur.offset().top,
+				offsetLeft = $cur.offset().left,
+				eleW = $cur.width();
+
+			var $add = $cur.clone()
+							.hide();//clone ele to hold position
+			$cur.before($add);
+			
+			$(window).on('scroll',function(){
+				var scrollTop = $(this).scrollTop();
+				if(scrollTop >= offsetTop){
+					setFixed();
+				}else{
+					unSetFixed();
+				}
+
+			});
+
+			function setFixed(){
+				$add.show();
+				$cur.css({
+					'position': 'fixed',
+					'width': eleW,
+					'top': 0,
+					'margin': 0,
+					'left': offsetLeft
+				});
+			}
+			function unSetFixed(){
+				$add.hide();
+				$cur.removeAttr('style');
+			}
+			
+
+		};
+		$('.nav').each(function(){
+			$(this).stick();
+		});
+	
+	</script>
+</body>
+</html>

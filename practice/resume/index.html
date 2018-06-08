@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>顾嘉诚的简历</title>
+	<script type="text/javascript" src='../jquery.js'></script>
+	<script src="./iconfont.js"></script>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul li{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+		}
+
+		.icon {
+		   width: 1em; height: 1em;
+		   vertical-align: -0.15em;
+		   fill: currentColor;
+		   overflow: hidden;
+		}
+
+		body{
+			overflow: hidden;
+			font-family: PingFangSC-Regular, "Microsoft YaHei",sans-serif;
+			background-color: #17af97;
+		}
+
+		.main{
+			width: 1200px;
+			margin: 0 auto;
+		}
+		.main>div{			
+			text-align: center;
+			/*position: relative;*/
+			display: table;
+			width: 100%;
+		}
+		.main>div>div{
+			/*position: absolute;
+			top: 50%;*/
+			display: table-cell;
+			vertical-align: middle;
+			width: 100%;
+		}
+		.main>ul{
+			position: fixed;
+			right: 50px;
+		}
+		.main>ul li{
+			padding: 10px 0;
+		}
+		.main>ul li>a{
+			color: #333;
+			border: 1px solid #eee;
+			border-radius: 50%;
+			width: 8px;
+			height: 8px;
+			display: block;
+		}
+
+		h3{
+			font-weight: 900;
+			color: #fff;
+			font-size: 50px;
+			padding: 30px 0;
+			margin-bottom: 30px;
+		}
+		h3 a{
+			color: #eee;
+			font-size: 20px;
+			background-color: #37ddc4;
+			border-radius: 5px;
+			margin-left: 10px;
+			padding: 3px;
+		}
+/*		.main>div>div>p{
+			color: #ddd;
+			font-size: 40px;
+		}*/
+		#info img{
+			width: 180px;
+			border-radius: 50%;
+			border: 7px solid #ccc;
+		}
+		#info h3{
+			margin-top: 15px;
+			margin-bottom: 10px;
+			font-size: 30px;
+			color: #fff;
+			padding: 0;
+		}
+		#info p{
+			color: #fff;
+			font-size: 25px;
+			margin-bottom: 10px;
+		}
+		#info a{
+			color: #eee;
+			margin-right: 10px;
+			padding: 3px;
+			border-radius: 5px;
+			background-color: #37ddc4;
+		}
+
+		.main>#project>div>ul{
+			width: 1200px;
+			margin: 0 auto;
+		}
+		.main>#project>div>ul:after{
+			content: '';
+			display: block;
+			clear: both;
+		}
+		.main>#project>div>ul>li{
+			float: left;
+			width: 600px;
+			text-align: left;
+			margin-bottom: 40px;
+			height: 200px;
+		}
+		.main>#project>div>ul>li>a{
+			color: #fff;
+			font-size: 50px;
+			border-radius: 50%;
+			background-color: rgba(100,100,100,0.5);
+			padding: 15px;
+			display: block;
+			float: left;
+			width: 50px;
+			height: 50px;
+			margin: 0 50px;
+			line-height: 50px;
+		}
+		.main>#project>div>ul>li>h4>a{
+			font-size: 30px;
+			color: rgba(100,100,100,0.5);
+		}
+		.main>#project>div>ul>li>h4{
+			margin-top: 5px;
+			margin-bottom: 9px;
+		}
+		.main>#project>div>ul>li>p{
+			font-size: 20px;
+			color: rgb(158,218,207);
+			padding: 3px 0;
+			width: 415px;
+			float: right;
+		}
+
+		.main>#skills>div>ul>li>p.lan{
+			float: left;
+			line-height: 50px;
+			color: #fff;
+			font-size: 30px;
+			width: 200px;
+			text-align: left;
+		}
+/*.main>#skills>div>ul>li>p.percent{
+	line-height: 50px;
+	color: #fff;
+	font-size: 30px;
+}*/
+		.main>#skills>div>ul>li:after{
+			content: '';
+			display: block;
+			clear: both;
+		}
+		.main>#skills>div>ul>li{
+			width: 1100px;
+			margin: 0 auto;
+			margin-bottom: 20px;
+		}
+		.pannel-ct{
+			height: 50px;
+			width: 800px;
+			background-color: rgb(240, 236, 236);
+			margin: 0 auto;
+			float: left;
+		}
+		.pannel{
+			width: 600px;
+			height: 50px;
+			background-color: #333;
+		}
+		.html .pannel{
+			width: 680px;
+		}
+		.css .pannel{
+			width: 640px;
+		}
+		.js .pannel{
+			width: 590px;
+		}
+		.jq .pannel{
+			width: 620px;
+		}
+		#history h4{
+			color: #333;
+			font-size: 40px;
+			margin: 20px 0;
+		}
+		#history div>div{
+			text-align: left;
+			max-width: 600px;
+			margin: 0 auto;
+		}
+		#history p{
+			font-size: 20px;
+			color: #ccc;
+			margin-bottom: 10px;
+		}
+		#history p.time{
+			font-size: 30px;
+			color: #eee;
+		}
+
+		.selected{
+			background-color: #333;
+		}
+		.resume ul{
+			width: 300px;
+			/*border: 1px solid #333;*/
+			margin: 0 auto;
+			margin-bottom: 50px;
+		}
+		.resume ul>li{
+			display: inline-block;
+			background-color: #37ddc4;
+			padding: 5px;
+			margin-bottom: 5px;
+			border-radius: 5px;
+			cursor: pointer;
+			color: #fff;
+		}
+		.resume ol>li{
+			text-align: left;
+			width: 800px;
+			margin: 0 auto;
+			color: #fff;
+			font-size: 20px;
+			margin-bottom: 10px;
+		}
+
+		#vue-prj div.pic{
+			text-align: right;
+			float: left;
+			width: 50%;
+		}
+		#vue-prj img{
+			width: 500px;
+			margin-right: 100px;
+		}
+		#vue-prj ul.describe{
+			text-align: left;
+			float: left;
+			width: 50%;
+		}
+		#vue-prj ul.describe>li{
+			margin-bottom: 20px;
+		}
+		#vue-prj ul.describe>li:after{
+			content: '';
+			display: block;
+			clear: both;
+		}
+		#vue-prj ul.describe h4{
+			float: left;
+			font-size: 25px;
+			color: #eee;
+			margin-bottom: 15px;
+		}
+		#vue-prj ul.describe p{
+			width: 450px;
+			line-height: 25px;
+			float: left;
+			font-size: 20px;
+			color: rgb(243,235,235);
+		}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div id="info">
+			<div>
+				<img src="demo.jpg">
+				<h3>顾嘉诚</h3>
+				<p>本科毕业 | 前端工程师</p>
+				<!-- <p>期望薪资：10k</p> -->
+				<p>gujiacheng94@163.com</p>
+				<p>15620621625</p>
+				<a href="https://github.com/Hunter-Gu/coding" target="_blank">Github</a>
+				<a href="http://www.jianshu.com/u/c908d13ff468" target="_blank">博客</a>
+			</div>
+		</div>
+		<div id="vue-prj">
+			<div>
+				<h3>基于 Vue 的音乐播放器<a href="http://couzin_gu.coding.me/Demo/vue-music/page.html" target="_blank">预览</a></h3>
+				<div class="pic"><img src="work-1.png"></div>
+				<ul class="describe">
+					<li>
+						<h4>使用技术： </h4>
+						<p>Vue、 Webpack、 JS、 AJAX、 HTML5</p>
+					</li>
+					<li>
+						<h4>项目描述：</h4>
+						<p>可以进行歌曲的暂停与播放，对歌曲的播放进度进行调节，并对歌词进行同步。播放上一首或者下一首时，获取的都是随机歌曲。可以进行音量的控制，满足一个基本的音乐播放器的功能。</p>
+					</li>
+					<li>
+						<h4>实现细节： </h4>
+						<p>通过 HTML5 的 audio 标签，可以将音频嵌入到 HTML 中，并通过该标签提供的一些属性和方法，可以实现开始、暂停以及对音量进行调节等功能。歌词同步可以根据当前播放的进度与歌词的时间戳来实现。将歌词放入数组中，通过 vue 的 v-for 将数组中的内容渲染到页面上，需要改变页面上的歌词时，只需要将数组的内容改变即可。</p>
+					</li>					
+				</ul>
+			</div>
+		</div>
+		<div id="vue-prj">
+			<div>
+				<h3>基于 Vue 的照片墙<a href="http://hunter.github.me/vue/picture-wall/page.html" target="_blank">预览</a></h3>
+				<div class="pic"><img src="work-2.png"></div>
+				<ul class="describe">
+					<li>
+						<h4>使用技术： </h4>
+						<p>Vue、 Webpack、 JS、 LeanCloud</p>
+					</li>
+					<li>
+						<h4>项目描述：</h4>
+						<p>可以通过上传图片，以及发表文字，对页面的内容进行添加。</p>
+					</li>
+					<li>
+						<h4>实现细节： </h4>
+						<p>阅读 leanCloud 的文档，通过使用 leanCloud 提供的js api，实现登陆 以及注册功能，这样便不需要通过后台来实现。注册/登陆后，可以上传图片以及写上一段对应的文字，在刷新页面 或者 重新登录后，内容不会消失。
+						通过原生 js 对图片以及对应文字实现瀑布流布局，看起来比较美观。</p>
+					</li>					
+				</ul>
+			</div>
+		</div>
+		<div id="project">
+			<div>
+				<h3>项目经验</h3>
+				<ul>
+					<li>
+						<a href="https://hunter-gu.github.io/coding/practice/info-list/info-list.html"  target="_blank">
+							<svg class="icon" aria-hidden="true">
+							  <use xlink:href="#icon-3"></use>
+							</svg>
+						</a>
+						<h4><a href="https://hunter-gu.github.io/coding/practice/info-list/info-list.html"  target="_blank">信息收集表</a></h4>
+						<p>使用技术: jQuery、 JS</p>
+						<p>实现了活动页面的信息收集表，可以对用户输入的内容进行简单的验证，以及提交的工作。</p>
+					</li>
+					<li>
+						<a href="https://hunter-gu.github.io/coding/practice/date-picker/index.html" target="_blank">
+							<svg class="icon" aria-hidden="true">
+							  <use xlink:href="#icon-3"></use>
+							</svg>
+						</a>
+						<h4><a href="https://hunter-gu.github.io/coding/practice/date-picker/index.html" target="_blank">日历</a></h4>
+						<p>使用技术: jQuery、 JS</p>
+						<p>实现了很多场景下很常见的日历插件，可以查看相应年的日期；可扩展选择日期等功能。</p>
+					</li>
+					<li>
+						<a href="http://couzin_gu.coding.me/Demo/music/index.html" target="_blank">
+							<svg class="icon" aria-hidden="true">
+							  <use xlink:href="#icon-3"></use>
+							</svg>
+						</a>
+						<h4><a href="http://couzin_gu.coding.me/Demo/music/index.html" target="_blank">简单的音乐播放器</a></h4>
+						<p>使用技术: jQuery、 AJAX、 HTML5、 rem</p>
+						<p>可以进行歌曲的切换，以及选择电台的功能，可以查看歌曲的歌词。</p>
+					</li>
+					<li>
+						<a href="http://hunter.github.me/practice/carousel/index.html">
+							<svg class="icon" aria-hidden="true">
+							  <use xlink:href="#icon-3"></use>
+							</svg>
+						</a>
+						<h4><a  href="http://hunter.github.me/practice/carousel/index.html" target="_blank">轮播图</a></h4>
+						<p>使用技术： requirejs、 jQuery</p>
+						<p>通过模块化实现。具体有三种轮播效果，stickup 以及回到顶部等功能。</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		
+		<div id="skills">
+			<div>
+				<h3>擅长技术</h3>
+				<ul>
+					<li class="html">
+						<p class="lan">HTML</p>
+						<div class="pannel-ct">
+							<div class="pannel"></div>
+						</div>
+					</li>
+					<li class="css">
+						<p class="lan">CSS</p>
+						<div class="pannel-ct">
+							<div class="pannel"></div>
+						</div>
+					</li>
+					<li class="js">
+						<p class="lan">Javascript</p>
+						<div class="pannel-ct">
+							<div class="pannel"></div>
+						</div>
+					</li>
+					<li class="jq">
+						<p class="lan">jQuery</p>
+						<div class="pannel-ct">
+							<div class="pannel"></div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="resume">
+			<div>
+				<ul>
+					<li>HTML/HTML5</li>
+					<li>CSS/CSS3</li>
+					<li>Vue</li>
+					<li>Ajax</li>
+					<li>Requirejs</li>
+					<li>JSONP/CORS</li>
+					<li>jQuery</li>
+					<li>webpack</li>
+					<li>Git</li>
+					<li>Linux</li>
+				</ul>
+				<ol>
+					<li>熟练使用 HTML、CSS、JS、jQuery 等主流技术进行开发。</li>
+					<li>熟练使用 jQuery、 requirejs 等主流库，了解一些主流框架如 Vue。</li>
+					<li>理解关于跨域的内容，如 JSONP、 CORS。</li>
+					<li>了解常见的布局，知道盒模型，浮动定位以及 BFC 等特性。</li>
+					<li>了解 Vue 的使用，可以通过 webpack 进行简单的配置工作来开始Vue项的开发。</li>
+					<li>了解 Linux 命令行，可以通过 git 进行简单的提交工作。</li>
+					<li>了解 HTML5、 CSS3，有实现简单效果的经验。</li>
+				</ol>
+			</div>  
+		</div>
+		
+		<div id="history">
+			<div>
+				<h3>工作经历</h3>
+				<div>
+					<p class="time">2016.7 至 2016.12</p>
+					<p>深圳市骏龙电子有限公司北京分公司</p>
+					<p>工作岗位：AE（应用工程师）</p>
+					<p>主要职责：主要负责给乐视TV维护 MCU 代码，协调 BSP 组与硬件之间的调试工作</p>
+				</div>
+			</div>
+		</div>
+		<ul class="mark">
+			<li><a href="javascript:void(0)" class="selected"></a></li>
+			<li><a href="javascript:void(0)"></a></li>
+			<li><a href="javascript:void(0)"></a></li>
+			<li><a href="javascript:void(0)"></a></li>
+			<li><a href="javascript:void(0)"></a></li>
+			<li><a href="javascript:void(0)"></a></li>
+			<li><a href="javascript:void(0)"></a></li>
+		</ul>
+
+	</div>
+
+	<script type="text/javascript">
+		var fullPage = (function(){
+			var curIndex = 0,
+				isWheeling = false;
+
+			var winH = $(window).height();
+
+			setSize();
+			function setSize(){				
+				$('.main>div').height(winH);
+				$('.mark').css({
+					'top': winH / 2 - $('.mark').height() / 2
+				});
+			}
+
+			
+
+			function setSelected(){
+				$('.selected').removeClass('selected')
+				$('.mark li').eq(curIndex).children().addClass('selected');
+				$('body').animate({
+					'scrollTop': winH * curIndex
+				},500,function(){
+					setTimeout(function(){
+						isWheeling = false;
+					},300);
+				});
+			}
+
+			function bindEvent(){
+				$(window).on('wheel',function(e){
+					if(isWheeling){
+						e.preventDefault();
+						return ;
+					}
+					
+					var wheelDir = (e.originalEvent.deltaY > 0) ? "down" : "up";
+					if((wheelDir === 'down' && curIndex === 6) || (wheelDir === 'up' && curIndex === 0)){
+						return ;
+					}
+					isWheeling = true;
+					curIndex = (wheelDir === 'down') ? (curIndex + 1) : (curIndex - 1);
+					setSelected();
+					
+				});
+				$('.mark').on('click','a',function(e){
+					curIndex = $(this).parent().index();
+					setSelected();
+				});
+				$(window).on('resize',function(){
+					winH = $(window).height();
+					setSize();
+				});
+			}
+			return {
+				bindEvent: bindEvent
+			};
+
+		})();
+		
+		fullPage.bindEvent();
+	</script>
+</body>
+</html>

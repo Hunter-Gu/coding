@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>online</title>
+	<script type="text/javascript" src='../jquery.js'></script>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		li{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+		}
+
+		.ct{
+			width: 800px;
+			margin: 0 auto;
+		}
+		.ct h3{
+			background-color: rgb(151,10,1);
+			color: #fff;
+			padding: 10px;
+		}
+		.ct ul{
+			width: 700px;
+			margin: 20px auto;
+		}
+		.ct ul:after{
+			content: '';
+			display: block;
+			clear: both;
+		}
+		.ct li{
+			float: left;
+			text-align: center;
+			width: 70px;
+			height: 80px;
+		}
+		.ct a{
+			color: #333;
+		}
+		.ct p{
+			margin: 5px;
+			font-size: 10px;
+			margin-bottom: 10px;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="ct">
+		<h3>当前在线</h1>
+		<ul>
+			
+		</ul>
+	</div>
+
+	<script type="text/javascript">
+		var opts = {
+			type: 'get',
+			url: 'info.php',
+			data: {
+				img: 'img',
+				name: 'name'
+			},
+			dataType: 'json',
+			success: function(data){
+				dealWith(data);
+			},
+			error: function(){
+				console.log('error');
+			}
+		};	
+		function getData(){
+			$.ajax(opts);
+		}
+		function dealWith(data){
+			var str = '';
+			for(var i = 0;i < data.length;i ++){
+				str += '<li><a href="javascript:void(0)"><img src="' + JSON.parse(data[i])['src'];
+				str += '"></a><a href="javascript:void(0)"><p>' + JSON.parse(data[i])['name'];
+				str += '</p></a></li>';
+			}
+			$('.ct ul').append($(str));
+			shortName()
+		}
+		function shortName(){
+			$('p').each(function(){
+				if($(this).text().length > 7){
+					$(this).text($(this).text().substr(0,4) + '...');
+				}
+			});
+		}
+		
+		getData();
+	</script>
+</body>
+</html>

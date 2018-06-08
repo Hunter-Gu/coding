@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>other stick</title>
+	<script type="text/javascript" src='../jquery.js'></script>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		li{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+		}
+		.content{
+			height: 100px;
+			background-color: red;
+		}
+		.nav{
+			margin: 50px 100px;
+		}
+		.nav ul{
+			background-color: #333;
+			border-radius: 5px;
+			padding: 10px 20px;
+		}
+		.nav ul:after{
+			display: block;
+			content: '';
+			clear: both;
+		}
+		.nav li{
+			float: left;
+			padding: 20px 10px;
+		}
+		.nav li>a{
+			color: #fff;
+		}
+		.main{
+			height: 1000px;
+			background-color: #ccc;
+		}
+	</style>
+</head>
+<body>
+	<div class="header">
+		<div class="content"></div>
+		<div class="nav">
+			<ul>
+				<li>
+					<a href="javascript:void(0)">1主页</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)">博客</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)">github</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)">其他</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="main"></div>
+	<div class="header">
+		<div class="content"></div>
+		<div class="nav">
+			<ul>
+				<li>
+					<a href="javascript:void(0)">2主页</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)">博客</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)">github</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)">其他</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="main"></div>
+	<div class="header">
+		<div class="content"></div>
+		<div class="nav">
+			<ul>
+				<li>
+					<a href="javascript:void(0)">3主页</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)">博客</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)">github</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)">其他</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="main"></div>
+	<div class="header">
+		<div class="content"></div>
+		<div class="nav">
+			<ul>
+				<li>
+					<a href="javascript:void(0)">4主页</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)">博客</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)">github</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)">其他</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="main"></div>
+
+	<script type="text/javascript">
+		var stick = (function(){
+			
+			function setFixed($ele){
+				var eleOffsetLeft = $ele.offset().left,
+					eleW = $ele.width(),
+					eleH = $ele.outerHeight(true);
+
+				if(isFixed($ele)){
+					return ;
+				}
+				$ele.css({
+					'position': 'fixed',
+					'width': eleW,
+					'top': 0,
+					'left': eleOffsetLeft,
+					'margin': 0
+				});
+				$ele.prev().css({
+					'margin-bottom': eleH
+				});
+				$ele.addClass('fixed');
+			}
+
+			function isFixed($ele){
+				if($ele.hasClass('fixed')){
+					return true;
+				}else{
+					return false;
+				}
+			}
+
+			function bindEvent($ele){
+				var eleOffsetTop = $ele.offset().top;
+
+				$(window).on('scroll',function(){
+					var eleScrollTop = $(window).scrollTop();
+					if(eleScrollTop > eleOffsetTop){
+						setFixed($ele);
+					}else{
+						$ele.removeAttr('style');
+						$ele.prev().removeAttr('style');
+						$ele.removeClass('fixed');
+					}
+				});
+			}
+
+			return {
+				bindEvent: bindEvent
+			}
+		})();
+		
+		$('.nav').each(function(){
+			stick.bindEvent($(this));
+		});
+	</script>
+</body>
+</html>

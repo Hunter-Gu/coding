@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>information list</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="fn.js"></script>
+	<style type="text/css"></style>
+</head>
+<body>
+	<div class="list">
+		<h1>
+			<div class="layout">信息收集表</div>
+		</h1>
+		<div class="layout">
+			<div>
+				<h2>姓名<span class="limit">（只包含数字、字母、下划线）</span><span class="size">0/10</span></h2>
+				<input type="text" name="name">
+			</div>
+			<div>
+				<h2>QQ<span class="limit">（只包含数字）</span><span class="size">0/15</span></h2>
+				<input type="text" name="qq">
+			</div>
+			<div>
+				<h2>要说的话<span class="limit"></span><span class="size">0/200</span></h2>
+				<textarea name="words"></textarea>
+			</div>
+		
+			<div class="ct-select">
+				<div class="select">
+					<label>
+						<input type="checkbox" name="milk">Milk
+					</label>
+					<label>
+						<input type="checkbox" name="sugar">Sugar
+					</label>
+					<label>
+						<input type="checkbox" name="lemon">Lemon
+					</label>
+				</div>
+				<div class="select">
+					<label>
+						<input type="radio" name="sex" value="male">Male
+					</label>
+					<label>
+						<input type="radio" name="sex" value="female">Female
+					</label>
+				</div>
+			</div>
+			<input type="submit" name="submit" value="提交" class="submit">
+			<span class="warning">请把信息填写完整</span>
+		</div>
+	</div>
+
+	<div id="modal" class="modal-ct">
+		<div class="cover"></div>
+		<div class="modal-contain">
+			<a class="close" href="javascript:void(0)">X</a>
+			<p>确定提交？</p>
+			<input type="submit" name="yes" value="是">
+			<input type="submit" name="no" value="否">
+		</div>
+		<div class="error">
+			<a class="close" href="javascript:void(0)">X</a>
+			<p>对不起，出错了！请稍后再试...</p>
+			<input type="submit" name="sure" value="确定">
+		</div>
+	</div>
+
+	<script type="text/javascript" src="index.js"></script>
+</body>
+</html>

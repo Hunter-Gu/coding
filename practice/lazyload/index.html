@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>lazyLoad</title>
+	<script type="text/javascript" src='../jquery.js'></script>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		li{
+			list-style: none;
+		}
+		.layout{
+			width: 1000px;
+			margin: 0 auto;
+		}
+		li{
+			float: left;
+			border: 1px solid #ccc;
+			margin-left: 50px;
+			margin-bottom: 50px;
+		}
+		img{
+			width: 298px;
+			height: 300px;
+		}
+		ul{
+			margin-left: -50px;
+		}
+	</style>
+</head>
+<body>
+	<div class="layout">
+		<ul>
+			<li>
+				<img src="blank.jpg" data-src="demo.jpg">
+			</li>
+			<li>
+				<img src="blank.jpg" data-src="demo.jpg">
+			</li>
+			<li>
+				<img src="blank.jpg" data-src="demo.jpg">
+			</li>
+			<li>
+				<img src="blank.jpg" data-src="demo.jpg">
+			</li>
+			<li>
+				<img src="blank.jpg" data-src="demo.jpg">
+			</li>
+			<li>
+				<img src="blank.jpg" data-src="demo.jpg">
+			</li>
+			<li>
+				<img src="blank.jpg" data-src="demo.jpg">
+			</li>
+			<li>
+				<img src="blank.jpg" data-src="demo.jpg">
+			</li>
+			<li>
+				<img src="blank.jpg" data-src="demo.jpg">
+			</li>
+			<li>
+				<img src="blank.jpg" data-src="demo.jpg">
+			</li>
+			<li>
+				<img src="blank.jpg" data-src="demo.jpg">
+			</li>
+			<li>
+				<img src="blank.jpg" data-src="demo.jpg">
+			</li>
+			<li>
+				<img src="blank.jpg" data-src="demo.jpg">
+			</li>
+			<li>
+				<img src="blank.jpg" data-src="demo.jpg">
+			</li>
+			<li>
+				<img src="blank.jpg" data-src="demo.jpg">
+			</li>
+			<li>
+				<img src="blank.jpg" data-src="demo.jpg">
+			</li>
+			<li>
+				<img src="blank.jpg" data-src="demo.jpg">
+			</li>
+			<li>
+				<img src="blank.jpg" data-src="demo.jpg">
+			</li>
+			<li>
+				<img src="blank.jpg" data-src="demo.jpg">
+			</li>
+			<li>
+				<img src="blank.jpg" data-src="demo.jpg">
+			</li>
+			<li>
+				<img src="blank.jpg" data-src="demo.jpg">
+			</li>
+			<li>
+				<img src="blank.jpg" data-src="demo.jpg">
+			</li>
+			<li>
+				<img src="blank.jpg" data-src="demo.jpg">
+			</li>
+			<li>
+				<img src="blank.jpg" data-src="demo.jpg">
+			</li>
+		</ul>
+	</div>
+
+	<script type="text/javascript">
+		var lazyload = (function(){
+			function realizeLoad($ele){
+				if(!isLoad($ele)){
+					$ele.attr('src',$ele.data('src'));
+					$ele.addClass('loaded');
+				}
+				return ;
+			}
+			function isLoad($ele){
+				if($ele.hasClass('loaded')){
+					return true;
+				}else if(!!$ele.hasClass('loaded')){
+					return false;
+				}
+			}
+			function bindEvent($ele){
+				checkShow($ele);
+				$(window).on('scroll',function(){
+					var clock;
+					clearTimeout(clock);
+					clock = setTimeout(function(){
+						checkShow($ele);
+					},800);
+				});
+			}
+			function checkShow($ele){
+				var offsetTop = $ele.offset().top,
+					winH = $(window).height(),
+					scrollTop = $(window).scrollTop();
+
+				if(winH + scrollTop > offsetTop){
+					realizeLoad($ele);
+				}
+			}
+			return {
+				do: bindEvent
+			};
+		})();
+		$('img').each(function(){
+			lazyload.do($(this));
+		});
+	</script>
+</body>
+</html>

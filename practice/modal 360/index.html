@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>modal 360</title>
+	<script type="text/javascript" src='../jquery.js'></script>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		.modal{
+			position: fixed;
+			bottom: 0;
+			right: 0;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="modal">
+		<img src="t.jpg">
+		<img src="b.jpg">
+	</div>
+
+	<script type="text/javascript">
+		var modal = (function(){
+			function init($node){
+				$node.width($('img').width());
+				$node.on('click',function(){
+					$(this).animate({
+						'top': $node.offset().top + $node.children().last().height()
+					},1000,function(){
+						$node.animate({
+							'left': $node.offset().left + $node.children().first().width()
+						},1200,function(){});
+					});
+				});
+			}
+
+			return {
+				init: init
+			}
+		})();
+		modal.init($('.modal'));
+	</script>
+</body>
+</html>

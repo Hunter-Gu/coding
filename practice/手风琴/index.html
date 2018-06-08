@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>手风琴效果</title>
+	<script type="text/javascript" src='http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js'></script>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		li{
+			list-style: none;
+		}
+		.result li{
+			float: left;
+			width: 240px;
+			height: 400px;
+		}
+		.result ul:after{
+			display: block;
+			clear: both;
+			content: '';
+			background-image: url();
+		}
+	</style>
+</head>
+<body>
+	<div class="result">
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+
+	<script type="text/javascript">
+		var picList = (function(){
+			var lock = true;
+			function init($node){
+				for(var i = 0;i < $node.find('li').length;i ++){
+					$node.find('li').eq(i).css({
+						'background-image':'url(' + (i + 1) + '.jpg)'
+					});
+				}
+				$node.find('li').on('mouseover',function(){
+					if(!lock) return;
+					lock = false;
+					var _this = this;
+					$(_this).animate({
+						"width": 800
+					},500,function(){});
+					$(_this).siblings().animate({
+						"width": 100
+					},500,function(){
+						lock = true;
+					});
+				});
+				$node.on('mouseleave',function(){
+					$node.find('li').animate({
+						'width': 240
+					},1000,function(){});
+				});
+			}
+			return {
+				init: init
+			};
+		})();
+		picList.init($('.result'));
+	</script>
+</body>
+</html>
