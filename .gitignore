@@ -6,9 +6,6 @@
 .coverage
 .cache
 
-vf2e.config.js
-/views
-
 *node_modules
 *build
 *.profile
